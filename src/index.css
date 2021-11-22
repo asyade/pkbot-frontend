@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MainContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
+.SideMenu {
+  float: left;
+  min-width: 200px;
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.PageCotnainer {
+  display: inline-block;
+  width: calc(100% - 200px);
+  height: 100vh;
+}

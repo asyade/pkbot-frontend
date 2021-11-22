@@ -1,0 +1,19 @@
+.listLabel {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-bottom: 1px solid black;
+}
+
+.list {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.listItem {
+    padding: 4px 8px;
+}
+
+.listItem:hover {
+    cursor: pointer;
+    background-color: darkgreen;
+}

@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { render } from "react-dom";
+import { useEffect, useContext } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import SideMenu from './components/SideMenu'
+import Market from "./pages/Market"
+import './index.css'
+import  MarketProvider, { MarketContext } from "./contexts/MarketContext";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const marketContext = useContext(MarketContext)
+  
+  useEffect(() => {
+    marketContext?.loadMarkets();
+  });
+
+  return(
+    <MarketProvider>
+      <div className="MainContainer">
+        <SideMenu></SideMenu>
+        <div className="PageCotnainer">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Market />}>
+                {/* <Route path="teams" element={<Teams />}> */}
+                  {/* <Route path=":teamId" element={<Team />} /> */}
+                  {/* <Route path="new" element={<NewTeamForm />} /> */}
+                  {/* <Route index element={<LeagueStandings />} /> */}
+                {/* </Route> */}
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </div>
+    </MarketProvider>
+  )
 }
 
-export default App;
+export default App
